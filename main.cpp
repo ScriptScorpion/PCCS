@@ -62,21 +62,8 @@ void draw_ascii(int x, int y, size_t *ptr,  const char ch) {
     if (ptr == NULL) {
         return;
     }
-    if ((y < 26) || (*ptr >= ((size_t)(x-8)))) { // not full card can be displayed 
+    if ((y < 29) || (*ptr >= ((size_t)(x-8)))) { // not full card can be displayed 
         return;
-    }
-
-    for (int i = 1; i < (y-1);  ++i) {
-        mvprintw(i, 2, "|");
-    }
-    for (int i = 1; i < (y-1);  ++i) {
-        mvprintw(i, (x-3), "|");
-    }
-    for (int i = 2; i < (x-2); ++i) {
-        mvprintw(0, i, "#");
-    }
-    for (int i = 2; i < (x-2); ++i) {
-        mvprintw(y-1, i, "#");
     }
 
     switch (ch) {
@@ -296,6 +283,9 @@ void draw_ascii(int x, int y, size_t *ptr,  const char ch) {
         case '#': {
             mvprintw(ROW3, 4+(*ptr), " ");
             mvprintw(ROW8, 4+(*ptr), " ");
+            break;
+        }
+        case ' ': {
             break;
         }
         default: {
